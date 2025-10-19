@@ -22,9 +22,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: indexToBeShown,
-        onTap: (value) {
+        onTap: (newIndex) {
           setState(() {
-            indexToBeShown = value;
+            indexToBeShown = newIndex;
           });
         },
         items: [

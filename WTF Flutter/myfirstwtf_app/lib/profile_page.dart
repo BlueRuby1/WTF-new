@@ -4,7 +4,22 @@ class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Center(child: Text("Profile page"));
-  }
+  State<ProfilePage> createState() => _ProfilePageState();
 }
+class _ProfilePageState extends State<ProfilePage> {
+  @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("Profile"),
+          centerTitle: true,
+          actions: [IconButton(onPressed: (){}, icon: Icon(Icons.settings))],
+        ),
+        body: ListView(
+          children: [
+            
+          ],
+        ),
+      );
+    }
+  }

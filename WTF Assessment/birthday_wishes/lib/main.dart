@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Birthday Wishes',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink.shade300),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple.shade300),
       ),
       debugShowCheckedModeBanner: false,
       home: BottomNavigation(),
