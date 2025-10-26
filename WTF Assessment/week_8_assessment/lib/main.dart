@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:week_8_assessment/welcome_page.dart';
 
-void main() {}
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
