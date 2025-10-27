@@ -76,7 +76,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 style: TextStyle(color: Colors.grey),
                 children: [
                   TextSpan(
-                    text: "Terms & Privacy Policy",
+                    text: " Terms & Privacy Policy",
                     style: TextStyle(
                       color: Colors.blueAccent,
                       decoration: TextDecoration.underline,

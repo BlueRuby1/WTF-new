@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myfirstwtf_app/notification_page.dart';
+import 'package:myfirstwtf_app/pages/notification_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
