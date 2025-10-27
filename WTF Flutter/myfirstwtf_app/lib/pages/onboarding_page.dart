@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../widgets/custom_indicator.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -10,24 +13,56 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   int activeIndex = 0;
 
+  List<OnboardingItem> items = [
+    OnboardingItem(
+      title: "Welcome to Medicall",
+      subtitle:
+          "We help you take ambulance request for emergency and other purposes",
+      asset: "assets/onboardingpage.png",
+    ),
+    OnboardingItem(
+      title: "Get emergency medical help fast",
+      subtitle:
+          "Wherever you are. Need urgent help? we'll connect you to the nearest hospital.",
+      asset: "assets/onboardingpage.png",
+    ),
+    OnboardingItem(
+      title: "Meet Worldclass Respondents",
+      subtitle: "We'll connect you to world class respondents",
+      asset: "assets/onboardingpage.png",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
+    var onboardingItemToShow = items[activeIndex];
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         spacing: 16,
         children: [
-          CustomIndicator(indicatorCount: 3, activeIndex: activeIndex),
-          Image.asset('assets/onboardingpage.png', width: 300, height: 300),
-          Text(
-            "Welcome to Medicall",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
+          CustomIndicator(
+            indicatorCount: items.length,
+            activeIndex: activeIndex,
           ),
+          Image.asset(onboardingItemToShow.asset, width: 250, height: 250),
           Text(
-            "We help you take ambulance request for emergenccy and other purposes",
-            style: TextStyle(fontSize: 16),
+            onboardingItemToShow.title,
+            style: GoogleFonts.aDLaMDisplay(
+              fontWeight: FontWeight.w600,
+              fontSize: 36,
+            ),
             textAlign: TextAlign.center,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              onboardingItemToShow.subtitle,
+              style: GoogleFonts.k2d(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
           ),
         ],
       ),
@@ -48,9 +83,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   ),
             ElevatedButton(
               onPressed: () {
-                setState(() {
-                  activeIndex = activeIndex + 1;
-                });
+                if (activeIndex < items.length - 1) {
+                  setState(() {
+                    activeIndex = activeIndex + 1;
+                  });
+                } else {
+                  Navigator.of(context).pushReplacementNamed("/login");
+                }
               },
               child: Text("Next"),
             ),
@@ -61,30 +100,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 }
 
-class CustomIndicator extends StatelessWidget {
-  const CustomIndicator({
-    super.key,
-    required this.indicatorCount,
-    required this.activeIndex,
-  });
-  final int indicatorCount;
-  final int activeIndex;
+class OnboardingItem {
+  String title;
+  String subtitle;
+  String asset;
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      spacing: 2,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(indicatorCount, (index) {
-        return Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: activeIndex == index ? Colors.blue : Colors.blue.shade200,
-          ),
-          height: 10,
-          width: 10,
-        );
-      }),
-    );
-  }
+  OnboardingItem({
+    required this.title,
+    required this.subtitle,
+    required this.asset,
+  });
 }

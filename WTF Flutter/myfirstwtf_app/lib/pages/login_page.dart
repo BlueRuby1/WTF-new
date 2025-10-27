@@ -113,12 +113,12 @@ class _LoginPageState extends State<LoginPage> {
           Row(
             spacing: 8,
             children: [
-              Expanded(child: Divider()),
+              Expanded(child: Divider(color: Colors.black38)),
               Text(
                 "Sign up with",
                 style: TextStyle(fontWeight: FontWeight.w300),
               ),
-              Expanded(child: Divider()),
+              Expanded(child: Divider(color: Colors.black38)),
             ],
           ),
 
