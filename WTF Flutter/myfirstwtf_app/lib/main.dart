@@ -3,6 +3,7 @@ import 'package:myfirstwtf_app/bottom_navigation.dart';
 import 'package:myfirstwtf_app/pages/login_page.dart';
 // import 'package:myfirstwtf_app/home_page.dart';
 import 'package:myfirstwtf_app/pages/onboarding_page.dart';
+import 'package:myfirstwtf_app/pages/signup_page.dart';
 
 
 void main() {
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context)=>OnboardingPage(),
         "/home": (context) => BottomNavigation(),
-        "/login":(context) => LoginPage()
+        "/login":(context) => LoginPage(),
+        "/signup": (context) => SignupPage(),
       },
       initialRoute: "/login",
       // home: BottomNavigation(),

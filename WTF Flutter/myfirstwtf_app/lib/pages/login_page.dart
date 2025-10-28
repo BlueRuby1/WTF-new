@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myfirstwtf_app/widgets/custom_textfield.dart';
+import 'package:myfirstwtf_app/widgets/password_textfield.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -20,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
 
         children: [
           Text(
-            "Get Started",
+            "Welcome Back",
             style: GoogleFonts.playfairDisplay(
               fontSize: 32,
               fontWeight: FontWeight.bold,
@@ -30,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           SizedBox(height: 5),
           Text(
-            "Register below with your details!",
+            "Been a While",
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             textAlign: TextAlign.center,
           ),
@@ -44,24 +46,9 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           SizedBox(height: 20),
-          TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              labelText: "Email",
-            ),
-          ),
+          CustomTexfield(label: "Email"),
           SizedBox(height: 20),
-          TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              labelText: "Password",
-            ),
-            obscureText: true,
-          ),
+          PasswordTextfield(),
           SizedBox(height: 25),
           Row(
             children: [
@@ -150,10 +137,13 @@ class _LoginPageState extends State<LoginPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Already have an account?"),
+              Text("Don't have an account?"),
               GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed("/signup");
+                },
                 child: Text(
-                  " Sign in",
+                  " Sign up",
                   style: TextStyle(
                     color: Colors.blue,
                     fontWeight: FontWeight.w600,
