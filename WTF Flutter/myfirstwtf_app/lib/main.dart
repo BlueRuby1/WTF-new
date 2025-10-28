@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:myfirstwtf_app/bottom_navigation.dart';
 import 'package:myfirstwtf_app/pages/login_page.dart';
 // import 'package:myfirstwtf_app/home_page.dart';
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Save A Life',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        textTheme: GoogleFonts.robotoTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
       routes: {
