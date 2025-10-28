@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myfirstwtf_app/widgets/custom_button.dart';
 import 'package:myfirstwtf_app/widgets/custom_textfield.dart';
 import 'package:myfirstwtf_app/widgets/password_textfield.dart';
+import 'package:myfirstwtf_app/widgets/social_signin.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -21,7 +23,7 @@ class _SignupPageState extends State<SignupPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 100,),
+            SizedBox(height: 80),
             Text(
               "Get Started",
               style: GoogleFonts.play(
@@ -33,14 +35,39 @@ class _SignupPageState extends State<SignupPage> {
             ),
             SizedBox(height: 5),
             Text(
-              "Register Below with your details!",
+              "Create an account to continue",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               textAlign: TextAlign.center,
             ),
             CustomTexfield(label: "Username"),
             CustomTexfield(label: "Email"),
             PasswordTextfield(),
-            
+            PasswordTextfield(),
+            CustomButton(
+              text: "Sign up",
+              onPressed: () {
+                Navigator.of(context).pushReplacementNamed("/home");
+              },
+            ),
+            SocialSignin(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Already have an account?"),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacementNamed("/login");
+                  },
+                  child: Text(
+                    " Login",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

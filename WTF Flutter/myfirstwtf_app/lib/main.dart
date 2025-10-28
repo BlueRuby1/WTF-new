@@ -5,7 +5,6 @@ import 'package:myfirstwtf_app/pages/login_page.dart';
 import 'package:myfirstwtf_app/pages/onboarding_page.dart';
 import 'package:myfirstwtf_app/pages/signup_page.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -22,12 +21,12 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       routes: {
-        "/": (context)=>OnboardingPage(),
+        "/": (context) => OnboardingPage(),
         "/home": (context) => BottomNavigation(),
-        "/login":(context) => LoginPage(),
+        "/login": (context) => LoginPage(),
         "/signup": (context) => SignupPage(),
       },
-      initialRoute: "/login",
+
       // home: BottomNavigation(),
     );
   }

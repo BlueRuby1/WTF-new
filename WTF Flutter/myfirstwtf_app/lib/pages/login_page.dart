@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myfirstwtf_app/widgets/custom_button.dart';
 import 'package:myfirstwtf_app/widgets/custom_textfield.dart';
 import 'package:myfirstwtf_app/widgets/password_textfield.dart';
+import 'package:myfirstwtf_app/widgets/social_signin.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -18,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: EdgeInsets.only(left: 16, right: 16, top: 140),
+        padding: EdgeInsets.only(left: 16, right: 16, top: 100),
 
         children: [
           Text(
@@ -37,110 +39,58 @@ class _LoginPageState extends State<LoginPage> {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 40),
-          TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              labelText: "Full Name",
-            ),
-          ),
-          SizedBox(height: 20),
           CustomTexfield(label: "Email"),
           SizedBox(height: 20),
           PasswordTextfield(),
-          SizedBox(height: 25),
-          Row(
-            children: [
-              Checkbox(
-                value: agreeToProcessData,
-                activeColor: Colors.blueAccent,
-                onChanged: (value) {
-                  setState(() {
-                    agreeToProcessData = value!;
-                  });
-                },
-              ),
+          SizedBox(height: 20),
+          // Row(
+          //   children: [
+          //     Checkbox(
+          //       value: agreeToProcessData,
+          //       activeColor: Colors.blueAccent,
+          //       onChanged: (value) {
+          //         setState(() {
+          //           agreeToProcessData = value!;
+          //         });
+          //       },
+          //     ),
 
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "I agree to the processing of",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
-                  ),
-                  Text(
-                    "Personal data",
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(height: 35),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              fixedSize: Size(400, 50),
-              backgroundColor: Colors.blueAccent,
-              foregroundColor: Colors.white,
-            ),
-            onPressed: () {},
-            child: Text(
-              "Sign up",
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
-            ),
-          ),
-          SizedBox(height: 30),
-          Row(
-            spacing: 8,
-            children: [
-              Expanded(child: Divider(color: Colors.black38)),
-              Text(
-                "Sign up with",
-                style: TextStyle(fontWeight: FontWeight.w300),
-              ),
-              Expanded(child: Divider(color: Colors.black38)),
-            ],
-          ),
-
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: FaIcon(FontAwesomeIcons.google),
-                color: Colors.red,
-                iconSize: 28,
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: FaIcon(FontAwesomeIcons.facebook),
-                color: Colors.blue,
-                iconSize: 28,
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: FaIcon(FontAwesomeIcons.linkedin),
-                color: Color(0xFF0A66C2),
-                iconSize: 28,
-              ),
-            ],
-          ),
+          //     Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: [
+          //         Text(
+          //           "I agree to the processing of",
+          //           style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
+          //         ),
+          //         Text(
+          //           "Personal data",
+          //           style: TextStyle(
+          //             color: Colors.blue,
+          //             fontWeight: FontWeight.w600,
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
           SizedBox(height: 25),
+          CustomButton(
+            text: "Login",
+            onPressed: () {
+              Navigator.of(context).pushReplacementNamed("/home");
+            },
+          ),
+          SizedBox(height: 20),
+          SocialSignin(),
+
+          SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Don't have an account?"),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushNamed("/signup");
+                  Navigator.of(context).pushReplacementNamed("/signup");
                 },
                 child: Text(
                   " Sign up",
