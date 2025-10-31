@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myfirstwtf_app/widgets/custom_button.dart';
 import 'package:myfirstwtf_app/widgets/custom_textfield.dart';
@@ -14,7 +14,17 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   bool agreeToProcessData = false;
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +49,12 @@ class _LoginPageState extends State<LoginPage> {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 40),
-          CustomTexfield(label: "Email"),
+          CustomTextfield(
+            label: "Email",
+            textEditingController: emailController,
+          ),
           SizedBox(height: 20),
-          PasswordTextfield(),
+          PasswordTextfield(textEditingController: passwordController),
           SizedBox(height: 20),
           // Row(
           //   children: [
@@ -77,10 +90,35 @@ class _LoginPageState extends State<LoginPage> {
           CustomButton(
             text: "Login",
             onPressed: () {
+              //check email
+              // if isn't valid return and show message
+              //check password
+              // if isn't valid return and show message
+              // else login
+              if (emailController.text != "annelady@gmail.com") {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Not a valid email. Try again")),
+                );
+                return;
+              }
+              if (passwordController.text != "23456") {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Not a valid password. Try again")),
+                );
+                return;
+              }
               Navigator.of(context).pushReplacementNamed("/home");
+
+              //
             },
           ),
           SizedBox(height: 20),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed("/forgot");
+            },
+            child: Text("Forgot password?"),
+          ),
           SocialSignin(),
 
           SizedBox(height: 20),

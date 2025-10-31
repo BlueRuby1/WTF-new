@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myfirstwtf_app/pages/about_us_page.dart';
 import 'package:myfirstwtf_app/pages/notification_page.dart';
+import 'package:myfirstwtf_app/pages/payment_method_page.dart';
+import 'package:myfirstwtf_app/pages/personal_information_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -55,6 +58,15 @@ class _ProfilePageState extends State<ProfilePage> {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         ListTile(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return AboutUsPage();
+                },
+              ),
+            );
+          },
           title: Text("About Us", style: TextStyle(fontSize: 16)),
           trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
         ),
@@ -76,11 +88,25 @@ class _ProfilePageState extends State<ProfilePage> {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         ListTile(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return PersonalInformationPage();
+                },
+              ),
+            );
+          },
           title: Text("Personal Information", style: TextStyle(fontSize: 16)),
           trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
         ),
         Divider(),
         ListTile(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => PaymentMethodPage()),
+            );
+          },
           title: Text("Payment Method", style: TextStyle(fontSize: 16)),
           trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
         ),

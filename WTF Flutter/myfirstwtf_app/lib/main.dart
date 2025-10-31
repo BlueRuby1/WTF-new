@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myfirstwtf_app/bottom_navigation.dart';
+import 'package:myfirstwtf_app/pages/forgot_password_page.dart';
 import 'package:myfirstwtf_app/pages/login_page.dart';
 // import 'package:myfirstwtf_app/home_page.dart';
 import 'package:myfirstwtf_app/pages/onboarding_page.dart';
@@ -23,12 +24,13 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       routes: {
-        "/": (context) => OnboardingPage(),
+        "/o": (context) => OnboardingPage(),
         "/home": (context) => BottomNavigation(),
         "/login": (context) => LoginPage(),
         "/signup": (context) => SignupPage(),
+        "/forgot": (context) => ForgotPasswordPage(),
       },
-
+      initialRoute: "/login",
       // home: BottomNavigation(),
     );
   }
