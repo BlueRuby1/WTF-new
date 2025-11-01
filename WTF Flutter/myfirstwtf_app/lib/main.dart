@@ -28,13 +28,13 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         routes: {
-          "/o": (context) => OnboardingPage(),
+          "/": (context) => OnboardingPage(),
           "/home": (context) => BottomNavigation(),
           "/login": (context) => LoginPage(),
           "/signup": (context) => SignupPage(),
           "/forgot": (context) => ForgotPasswordPage(),
         },
-        initialRoute: "/login",
+        //initialRoute: "/login",
         // home: BottomNavigation(),
       ),
     );

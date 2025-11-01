@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myfirstwtf_app/provider/user_notifier.dart';
 import 'package:myfirstwtf_app/widgets/custom_button.dart';
 import 'package:myfirstwtf_app/widgets/custom_textfield.dart';
 import 'package:myfirstwtf_app/widgets/password_textfield.dart';
 import 'package:myfirstwtf_app/widgets/social_signin.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,8 +19,6 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  bool agreeToProcessData = false;
-
   @override
   void dispose() {
     emailController.dispose();
@@ -28,6 +28,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    var userNotifier = Provider.of<UserNotifier>(context);
+
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.only(left: 16, right: 16, top: 100),
@@ -56,60 +58,18 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(height: 20),
           PasswordTextfield(textEditingController: passwordController),
           SizedBox(height: 20),
-          // Row(
-          //   children: [
-          //     Checkbox(
-          //       value: agreeToProcessData,
-          //       activeColor: Colors.blueAccent,
-          //       onChanged: (value) {
-          //         setState(() {
-          //           agreeToProcessData = value!;
-          //         });
-          //       },
-          //     ),
 
-          //     Column(
-          //       crossAxisAlignment: CrossAxisAlignment.start,
-          //       children: [
-          //         Text(
-          //           "I agree to the processing of",
-          //           style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
-          //         ),
-          //         Text(
-          //           "Personal data",
-          //           style: TextStyle(
-          //             color: Colors.blue,
-          //             fontWeight: FontWeight.w600,
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ],
-          // ),
           SizedBox(height: 25),
           CustomButton(
             text: "Login",
             onPressed: () {
-              //check email
-              // if isn't valid return and show message
-              //check password
-              // if isn't valid return and show message
-              // else login
-              if (emailController.text != "annelady@gmail.com") {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Not a valid email. Try again")),
-                );
-                return;
-              }
-              if (passwordController.text != "23456") {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Not a valid password. Try again")),
-                );
-                return;
-              }
-              Navigator.of(context).pushReplacementNamed("/home");
-
-              //
+              /*calling the login in the notifier class
+              */
+              userNotifier.login(
+                context,
+                emailController.text,
+                passwordController.text,
+              );
             },
           ),
           SizedBox(height: 20),
@@ -145,3 +105,24 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
+
+
+//check email
+              // if isn't valid return and show message
+              //check password
+              // if isn't valid return and show message
+              // else login
+              // if (emailController.text != "annelady@gmail.com") {
+              //   ScaffoldMessenger.of(context).showSnackBar(
+              //     SnackBar(content: Text("Not a valid email. Try again")),
+              //   );
+              //   return;
+              // }
+              // if (passwordController.text != "23456") {
+              //   ScaffoldMessenger.of(context).showSnackBar(
+              //     SnackBar(content: Text("Not a valid password. Try again")),
+              //   );
+              //   return;
+              // }
+              //
