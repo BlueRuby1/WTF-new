@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myfirstwtf_app/provider/user_notifier.dart';
+import 'package:myfirstwtf_app/provider/user_cubit.dart';
 import 'package:myfirstwtf_app/widgets/custom_button.dart';
 import 'package:myfirstwtf_app/widgets/custom_textfield.dart';
 import 'package:myfirstwtf_app/widgets/password_textfield.dart';
@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    var userNotifier = Provider.of<UserNotifier>(context);
+    var userNotifier = Provider.of<UserCubit>(context);
 
     return Scaffold(
       body: ListView(

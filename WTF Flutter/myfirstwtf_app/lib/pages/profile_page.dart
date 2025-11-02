@@ -4,7 +4,7 @@ import 'package:myfirstwtf_app/pages/about_us_page.dart';
 import 'package:myfirstwtf_app/pages/notification_page.dart';
 import 'package:myfirstwtf_app/pages/payment_method_page.dart';
 import 'package:myfirstwtf_app/pages/personal_information_page.dart';
-import 'package:myfirstwtf_app/provider/user_notifier.dart';
+import 'package:myfirstwtf_app/provider/user_cubit.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -17,7 +17,6 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         title: Text("Profile"),
@@ -136,22 +135,23 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Container _buildProfilePics() {
+    UserDetail? user = Provider.of<UserCubit>(context).state;
     return Container(
       decoration: BoxDecoration(shape: BoxShape.circle),
       clipBehavior: Clip.hardEdge,
-      child: Image.asset("assets/profile_pic.jpg", width: 100, height: 100),
+      child: Image.network(user!.profilePicture, width: 100, height: 100),
     );
   }
 
   Widget _buildDetails() {
-    UserDetail? user = Provider.of<UserNotifier>(context).loggedInUser;
+    UserDetail? user = Provider.of<UserCubit>(context).state;
 
-    if (user == null) return Text("User Details not set");
+    //if (user == null) return Text("User Details not set");
 
     return Column(
       children: [
         Text(
-          user.name,
+          user!.name,
           style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
         ),
         Text(

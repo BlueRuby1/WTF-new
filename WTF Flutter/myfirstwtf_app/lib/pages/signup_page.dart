@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myfirstwtf_app/provider/user_notifier.dart';
+import 'package:myfirstwtf_app/provider/user_cubit.dart';
 import 'package:myfirstwtf_app/widgets/custom_button.dart';
 import 'package:myfirstwtf_app/widgets/custom_textfield.dart';
 import 'package:myfirstwtf_app/widgets/password_textfield.dart';
@@ -19,7 +19,7 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    var userNotifier =  Provider.of<UserNotifier>(context);
+    var userNotifier = Provider.of<UserCubit>(context);
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -51,7 +51,11 @@ class _SignupPageState extends State<SignupPage> {
             CustomButton(
               text: "Sign up",
               onPressed: () {
-                userNotifier.signup(context, usernameController.text, emailController.text);
+                // userNotifier.signup(
+                //   context,
+                //   usernameController.text,
+                //   emailController.text,
+                // );
               },
             ),
             SocialSignin(),

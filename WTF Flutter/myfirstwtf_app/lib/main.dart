@@ -6,7 +6,8 @@ import 'package:myfirstwtf_app/pages/login_page.dart';
 // import 'package:myfirstwtf_app/home_page.dart';
 import 'package:myfirstwtf_app/pages/onboarding_page.dart';
 import 'package:myfirstwtf_app/pages/signup_page.dart';
-import 'package:myfirstwtf_app/provider/user_notifier.dart';
+import 'package:myfirstwtf_app/provider/user_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -18,8 +19,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => UserNotifier(),
+    return BlocProvider(
+      create: (context) => UserCubit(),
       child: MaterialApp(
         title: 'Save A Life',
         theme: ThemeData(
