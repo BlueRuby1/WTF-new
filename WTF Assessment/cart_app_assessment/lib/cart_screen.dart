@@ -28,7 +28,7 @@ class CartScreen extends StatelessWidget {
                     ),
                     backgroundColor: Theme.of(context).primaryColor,
                   ),
-                  TextButton(onPressed: () {}, child: Text("ORDER NOW")),
+                  TextButton(onPressed: () {}, child: Text("ORDER NOW", style: TextStyle(color: Colors.purple),)),
                 ],
               ),
             ),
@@ -84,17 +84,23 @@ class CartItemWidget extends StatelessWidget {
         Provider.of<Cart>(context, listen: false).removeItem(prodductId);
       },
       child: Card(
-        margin: EdgeInsets.symmetric(vertical: 4, horizontal: 15),
+        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Padding(
           padding: EdgeInsets.all(8),
           child: ListTile(
             leading: CircleAvatar(
+              backgroundColor: Colors.purple,
               child: Padding(
                 padding: EdgeInsets.all(6),
-                child: FittedBox(child: Text("\$${price}")),
+                child: FittedBox(
+                  child: Text(
+                    "\$${price}",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               ),
             ),
-            title: Text(title),
+            title: Text(title, style: TextStyle(fontSize: 18),),
             subtitle: Text('Total: \$${(price * quantity).toStringAsFixed(2)}'),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
@@ -106,7 +112,7 @@ class CartItemWidget extends StatelessWidget {
                       listen: false,
                     ).addItem(prodductId, price, title);
                   },
-                  icon: Icon(Icons.remove),
+                  icon: Icon(Icons.add),
                 ),
                 Text('$quantity'),
                 IconButton(
@@ -116,7 +122,7 @@ class CartItemWidget extends StatelessWidget {
                       listen: false,
                     ).removeSingleItem(prodductId);
                   },
-                  icon: Icon(Icons.add),
+                  icon: Icon(Icons.remove),
                 ),
               ],
             ),

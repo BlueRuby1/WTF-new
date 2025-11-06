@@ -14,7 +14,7 @@ class ProductListScreen extends StatelessWidget {
         title: Text("Food Order App"),
         actions: [
           Padding(
-            padding: EdgeInsetsGeometry.all(10),
+            padding: EdgeInsets.all(10),
             child: IconButton(
               onPressed: () {
                 Navigator.push(
@@ -22,7 +22,7 @@ class ProductListScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => CartScreen()),
                 );
               },
-              icon: Icon(Icons.shopping_cart),
+              icon: Icon(Icons.shopping_cart, color: Colors.blue,),
             ),
           ),
         ],
@@ -30,7 +30,7 @@ class ProductListScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: DUMMY_PRODUCTS.length,
         itemBuilder: (context, i) => ListTile(
-          title: Text(DUMMY_PRODUCTS[i]['title'] as String),
+          title: Text(DUMMY_PRODUCTS[i]['title'] as String, style: TextStyle(fontSize: 20),),
           subtitle: Text('\$${DUMMY_PRODUCTS[i]['price']}'),
           trailing: IconButton(
             icon: Icon(Icons.add),

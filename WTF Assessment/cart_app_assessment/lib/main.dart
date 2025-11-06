@@ -15,6 +15,10 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => Cart(),
       child: MaterialApp(
+        theme: ThemeData(primaryColor: Colors.purple,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow.shade100)
+
+        ),
         debugShowCheckedModeBanner: false,
         title: "Food Order App",
         home: ProductListScreen(),
