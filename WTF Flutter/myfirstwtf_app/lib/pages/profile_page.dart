@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:myfirstwtf_app/model/user_detail.dart';
 import 'package:myfirstwtf_app/pages/about_us_page.dart';
 import 'package:myfirstwtf_app/pages/notification_page.dart';
 import 'package:myfirstwtf_app/pages/payment_method_page.dart';
 import 'package:myfirstwtf_app/pages/personal_information_page.dart';
+import 'package:myfirstwtf_app/provider/user_notifier.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -14,6 +17,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("Profile"),
@@ -40,7 +44,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, "/login");
+            },
             icon: Icon(Icons.logout),
             label: Text("Logout"),
           ),
@@ -137,15 +143,19 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Column _buildDetails() {
+  Widget _buildDetails() {
+    UserDetail? user = Provider.of<UserNotifier>(context).loggedInUser;
+
+    if (user == null) return Text("User Details not set");
+
     return Column(
       children: [
         Text(
-          "Hannah Micheal",
+          user.name,
           style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
         ),
         Text(
-          "hannahmail@gmail.com",
+          user.email,
           style: TextStyle(fontWeight: FontWeight.w300, fontSize: 13),
         ),
       ],

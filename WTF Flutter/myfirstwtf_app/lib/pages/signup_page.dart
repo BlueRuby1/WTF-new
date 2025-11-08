@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myfirstwtf_app/provider/user_notifier.dart';
 import 'package:myfirstwtf_app/widgets/custom_button.dart';
 import 'package:myfirstwtf_app/widgets/custom_textfield.dart';
 import 'package:myfirstwtf_app/widgets/password_textfield.dart';
 import 'package:myfirstwtf_app/widgets/social_signin.dart';
+import 'package:provider/provider.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -13,8 +15,11 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var userNotifier =  Provider.of<UserNotifier>(context);
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
@@ -46,7 +51,7 @@ class _SignupPageState extends State<SignupPage> {
             CustomButton(
               text: "Sign up",
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed("/home");
+                userNotifier.signup(context, usernameController.text, emailController.text);
               },
             ),
             SocialSignin(),

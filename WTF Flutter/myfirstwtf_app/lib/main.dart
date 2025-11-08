@@ -6,6 +6,8 @@ import 'package:myfirstwtf_app/pages/login_page.dart';
 // import 'package:myfirstwtf_app/home_page.dart';
 import 'package:myfirstwtf_app/pages/onboarding_page.dart';
 import 'package:myfirstwtf_app/pages/signup_page.dart';
+import 'package:myfirstwtf_app/provider/user_notifier.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,22 +18,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Save A Life',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        textTheme: GoogleFonts.robotoTextTheme(),
+    return ChangeNotifierProvider(
+      create: (context) => UserNotifier(),
+      child: MaterialApp(
+        title: 'Save A Life',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+          textTheme: GoogleFonts.robotoTextTheme(),
+        ),
+        debugShowCheckedModeBanner: false,
+        routes: {
+          "/": (context) => OnboardingPage(),
+          "/home": (context) => BottomNavigation(),
+          "/login": (context) => LoginPage(),
+          "/signup": (context) => SignupPage(),
+          "/forgot": (context) => ForgotPasswordPage(),
+        },
+        //initialRoute: "/login",
+        // home: BottomNavigation(),
       ),
-      debugShowCheckedModeBanner: false,
-      routes: {
-        "/o": (context) => OnboardingPage(),
-        "/home": (context) => BottomNavigation(),
-        "/login": (context) => LoginPage(),
-        "/signup": (context) => SignupPage(),
-        "/forgot": (context) => ForgotPasswordPage(),
-      },
-      initialRoute: "/login",
-      // home: BottomNavigation(),
     );
   }
 }
